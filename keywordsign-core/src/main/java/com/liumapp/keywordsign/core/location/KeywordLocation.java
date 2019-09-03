@@ -1,5 +1,8 @@
 package com.liumapp.keywordsign.core.location;
 
+import com.alibaba.fastjson.JSONObject;
+import com.liumapp.keywordsign.core.dto.KeywordLocationDTO;
+import com.liumapp.keywordsign.core.job.JobDetail;
 import lombok.Data;
 
 /**
@@ -11,8 +14,11 @@ import lombok.Data;
  * date 2019/9/3
  */
 @Data
-public class KeywordLocation {
+public class KeywordLocation extends JobDetail <KeywordLocationDTO> {
 
-
+    @Override
+    public JSONObject handle(KeywordLocationDTO data) {
+        return null;
+    }
 
 }

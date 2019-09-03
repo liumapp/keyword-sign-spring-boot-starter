@@ -17,6 +17,6 @@ public abstract class JobDetail<T extends JobData> {
         this.jobResult = new JSONObject();
     }
 
-    public abstract JSONObject handle(T data);
+    public abstract JSONObject handle(T data) ;
 
 }
