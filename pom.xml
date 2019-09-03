@@ -30,6 +30,7 @@
     <module>keywordsign-core</module>
     <module>keywordsign-spring-boot-starter</module>
     <module>keywordsign-demo</module>
+    <module>itext-pdf-replace</module>
   </modules>
 
   <build>
