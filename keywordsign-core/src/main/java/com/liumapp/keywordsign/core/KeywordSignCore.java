@@ -1,5 +1,9 @@
 package com.liumapp.keywordsign.core;
 
+import com.alibaba.fastjson.JSONObject;
+import com.liumapp.keywordsign.core.job.JobData;
+import com.liumapp.keywordsign.core.job.JobDetail;
+
 /**
  * file KeywordSignCore.java
  * author liumapp
@@ -10,8 +14,7 @@ package com.liumapp.keywordsign.core;
  */
 public class KeywordSignCore
 {
-    public static void main( String[] args )
-    {
-        System.out.println( "Hello World!" );
+    public JSONObject doJob(JobDetail jobDetail, JobData jobData) {
+        return jobDetail.handle(jobData);
     }
 }
