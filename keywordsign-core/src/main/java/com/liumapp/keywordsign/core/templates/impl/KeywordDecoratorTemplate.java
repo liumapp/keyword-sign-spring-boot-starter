@@ -19,6 +19,4 @@ public abstract class KeywordDecoratorTemplate implements Keyword, Template {
         this.keyword = keyword;
     }
 
-
-
 }

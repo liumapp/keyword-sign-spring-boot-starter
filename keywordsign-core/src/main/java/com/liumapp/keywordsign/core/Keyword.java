@@ -10,11 +10,23 @@ package com.liumapp.keywordsign.core;
  */
 public interface Keyword {
 
+    /**
+     * 获取关键词x坐标
+     * @return
+     */
     public Float getKeywordPositionX ();
 
+    /**
+     * 获取关键词y坐标
+     * @return
+     */
     public Float getKeywordPositionY ();
 
-    public void buildPositionKey ();
+    /**
+     * 设置关键词
+     */
+    public void buildPositionKeyword (String word);
+
 
 
 }
