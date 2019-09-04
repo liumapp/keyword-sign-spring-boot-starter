@@ -39,6 +39,7 @@ public interface KeywordSign {
 
     /**
      * 直接使用pfx证书签署
+     * 但即便使用pfx证书，也是先将pfx证书写入keystore容器再执行签署
      * 带有时间戳
      * @param ksFileName
      * @param ksPassword
@@ -87,6 +88,7 @@ public interface KeywordSign {
 
     /**
      * 直接使用pfx证书签署
+     * 但即便使用pfx证书，也是先将pfx证书写入keystore容器再执行签署
      * 默认使用带有时间戳的签署算法
      * @param ksFileName
      * @param ksPassword
