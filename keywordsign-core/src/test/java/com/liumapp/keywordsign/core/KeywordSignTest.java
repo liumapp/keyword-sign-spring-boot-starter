@@ -16,7 +16,9 @@ public class KeywordSignTest {
 
     @Test
     public void testSign () {
-
+        KeywordSignConfigFactory.buildInstance("./data");
+        KeywordSign keywordSign = KeywordSignFactory.getInstance();
+        keywordSign.signWithoutTimeStamp();
     }
 
 }
