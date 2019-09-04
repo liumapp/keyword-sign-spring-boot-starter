@@ -20,6 +20,29 @@ public interface KeywordSign {
                                       String keyword
                                       );
 
+    public String signWithoutTimeStamp (String ksFileName,
+                                        String ksPassword,
+                                        String certAlias,
+                                        String pfxBase64,
+                                        String pfxPassword,
+                                        String pdfBase64,
+                                        String signPic,
+                                        String signFiled,
+                                        String keyword
+    );
+
+    public String signWithTimeStamp (String ksFileName,
+                                     String ksPassword,
+                                     String certAlias,
+                                     String pfxBase64,
+                                     String pfxPassword,
+                                     String pdfBase64,
+                                     String signPic,
+                                     String signFiled,
+                                     String keyword,
+                                     String timestampUrl
+    );
+
     public String signWithTimeStamp (String ksFileName,
                                    String ksPassword,
                                    String certAlias,
@@ -40,6 +63,6 @@ public interface KeywordSign {
                       String signFiled,
                       String keyword);
 
-    
+
 
 }
