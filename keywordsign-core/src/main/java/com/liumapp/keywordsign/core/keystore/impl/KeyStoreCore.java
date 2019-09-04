@@ -21,6 +21,9 @@ import java.time.temporal.ChronoUnit;
  */
 public class KeyStoreCore implements KeyStore {
 
+    protected KeyStoreCore() {
+    }
+
     @Override
     public boolean chkKeyStoreFile(String fileName) {
         if (!FileTool.isFileExists(fileName)) {
