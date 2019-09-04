@@ -38,7 +38,7 @@ public class KeyStoreCore implements KeyStore {
                     .newKeyPair()
                     .keyLength(2048)
                     .generateWithCertificate()
-                    .withValidity(1, ChronoUnit.YEARS)g
+                    .withValidity(1, ChronoUnit.YEARS)
                     .withDistinguishName()
                     .commonName("liumapp")
                     .state("HangZhou")
