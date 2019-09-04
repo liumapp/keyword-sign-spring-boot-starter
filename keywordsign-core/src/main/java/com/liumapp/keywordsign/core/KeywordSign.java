@@ -27,7 +27,8 @@ public interface KeywordSign {
                                    String pdfBase64,
                                    String signPic,
                                    String signFiled,
-                                   String keyword
+                                   String keyword,
+                                   String timestampUrl
                                      );
 
     public String sign (String ksFileName,
