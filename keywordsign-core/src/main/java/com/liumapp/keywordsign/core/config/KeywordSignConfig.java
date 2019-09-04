@@ -3,6 +3,7 @@ package com.liumapp.keywordsign.core.config;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 
 /**
  * file KeywordSignConfig.java
@@ -32,4 +33,7 @@ public class KeywordSignConfig {
      */
     private String afterKeywordSymbok = "\\}";
 
+    public KeywordSignConfig(String tmpPath) {
+        this.tmpPath = tmpPath;
+    }
 }

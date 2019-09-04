@@ -32,6 +32,10 @@ public class KeywordSignConfigFactory {
         KeywordSignConfigFactoryHolder.INSTANCE.buildKeywordSignConfig(tmpPath);
     }
 
+    public static void buildInstance (String tmpPath, String beforeKeywordSymbol, String afterKeywordSymbol) {
+        KeywordSignConfigFactoryHolder.INSTANCE.buildKeywordSignConfig(tmpPath, beforeKeywordSymbol, afterKeywordSymbol);
+    }
+
     public KeywordSignConfig getKeywordSignConfig () {
         if (this.keywordSignConfig == null) {
             throw new InvalidParameterException("KeywordSignConfig的参数必须进行设置");
@@ -41,6 +45,11 @@ public class KeywordSignConfigFactory {
 
     public void buildKeywordSignConfig (String tmpPath) {
         this.keywordSignConfig = new KeywordSignConfig(tmpPath);
+    }
+
+
+    public void buildKeywordSignConfig (String tmpPath, String beforeKeywordSymbol, String afterKeywordSymbol) {
+        this.keywordSignConfig = new KeywordSignConfig(tmpPath, beforeKeywordSymbol, afterKeywordSymbol);
     }
 
 }
