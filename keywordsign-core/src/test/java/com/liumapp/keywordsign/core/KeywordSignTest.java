@@ -24,15 +24,15 @@ public class KeywordSignTest {
     public void testSign () throws IOException {
         KeywordSignConfigFactory.buildInstance("./data");
         KeywordSign keywordSign = KeywordSignFactory.getInstance();
-        String signedPdfBase64 = keywordSign.signWithTimeStamp("./demo.ks",
+        String signedPdfBase64 = keywordSign.sign("./demo.ks",
                 "123456",
                 "liumapp",
+                Base64FileTool.filePathToBase64("./data/liumapp.pfx"),
                 "123123123",
                 Base64FileTool.filePathToBase64("./data/test.pdf"),
                 Base64FileTool.filePathToBase64("./data/me.jpg"),
                 "signFiled1",
-                "year",
-                KeywordSignConfigFactory.getInstance().getTimeStampUrl() + Sha1Tool.toSHA1(DateTool.getSimpleUTCDateString() + "_" + KeywordSignConfigFactory.getInstance().getTimeStampCode())
+                "year"
                 );
         Base64FileTool.saveBase64File(signedPdfBase64, "./data/result.pdf");
     }
