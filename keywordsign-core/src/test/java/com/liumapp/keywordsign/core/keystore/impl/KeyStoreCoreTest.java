@@ -26,4 +26,6 @@ public class KeyStoreCoreTest {
         keyStore.chkKeyStoreFile("./data/demo.ks");
         Assert.assertEquals(true, FileTool.isFileExists("./data/demo.ks"));
     }
+
+
 }

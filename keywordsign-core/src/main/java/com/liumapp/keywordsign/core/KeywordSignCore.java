@@ -27,4 +27,5 @@ class KeywordSignCore implements KeywordSign
     public String sign(String ksFileName, String ksPassword, String certAlias, String certPassword, String pdfBase64, String signPic, String signFiled, String keyword) {
         return this.signWithoutTimeStamp(ksFileName, ksPassword, certAlias, certPassword, pdfBase64, signPic, signFiled, keyword);
     }
+
 }
