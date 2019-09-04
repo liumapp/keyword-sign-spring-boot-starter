@@ -10,6 +10,19 @@ package com.liumapp.keywordsign.core;
  */
 public interface KeywordSign {
 
+    /**
+     * 从keystore中读取证书签署
+     * 不带时间戳
+     * @param ksFileName
+     * @param ksPassword
+     * @param certAlias
+     * @param certPassword
+     * @param pdfBase64
+     * @param signPic
+     * @param signFiled
+     * @param keyword
+     * @return
+     */
     public String signWithoutTimeStamp (String ksFileName,
                                       String ksPassword,
                                       String certAlias,
@@ -20,6 +33,20 @@ public interface KeywordSign {
                                       String keyword
                                       );
 
+    /**
+     * 直接使用pfx证书签署
+     * 不带时间戳
+     * @param ksFileName
+     * @param ksPassword
+     * @param certAlias
+     * @param pfxBase64
+     * @param pfxPassword
+     * @param pdfBase64
+     * @param signPic
+     * @param signFiled
+     * @param keyword
+     * @return
+     */
     public String signWithoutTimeStamp (String ksFileName,
                                         String ksPassword,
                                         String certAlias,
@@ -31,6 +58,21 @@ public interface KeywordSign {
                                         String keyword
     );
 
+    /**
+     * 从keystore中读取证书签署
+     * 带有时间戳
+     * @param ksFileName
+     * @param ksPassword
+     * @param certAlias
+     * @param pfxBase64
+     * @param pfxPassword
+     * @param pdfBase64
+     * @param signPic
+     * @param signFiled
+     * @param keyword
+     * @param timestampUrl
+     * @return
+     */
     public String signWithTimeStamp (String ksFileName,
                                      String ksPassword,
                                      String certAlias,
@@ -43,6 +85,20 @@ public interface KeywordSign {
                                      String timestampUrl
     );
 
+    /**
+     * 直接使用pfx证书签署
+     * 带有时间戳
+     * @param ksFileName
+     * @param ksPassword
+     * @param certAlias
+     * @param certPassword
+     * @param pdfBase64
+     * @param signPic
+     * @param signFiled
+     * @param keyword
+     * @param timestampUrl
+     * @return
+     */
     public String signWithTimeStamp (String ksFileName,
                                    String ksPassword,
                                    String certAlias,
@@ -54,6 +110,19 @@ public interface KeywordSign {
                                    String timestampUrl
                                      );
 
+    /**
+     * 从keystore中读取证书
+     * 默认使用带有时间戳的签署
+     * @param ksFileName
+     * @param ksPassword
+     * @param certAlias
+     * @param certPassword
+     * @param pdfBase64
+     * @param signPic
+     * @param signFiled
+     * @param keyword
+     * @return
+     */
     public String sign (String ksFileName,
                       String ksPassword,
                       String certAlias,
@@ -64,5 +133,28 @@ public interface KeywordSign {
                       String keyword);
 
 
+    /**
+     * 直接使用pfx证书签署
+     * 默认使用带有时间戳的签署算法
+     * @param ksFileName
+     * @param ksPassword
+     * @param certAlias
+     * @param pfxBase64
+     * @param pfxPassword
+     * @param pdfBase64
+     * @param signPic
+     * @param signFiled
+     * @param keyword
+     * @return
+     */
+    public String sign (String ksFileName,
+                        String ksPassword,
+                        String certAlias,
+                        String pfxBase64,
+                        String pfxPassword,
+                        String pdfBase64,
+                        String signPic,
+                        String signFiled,
+                        String keyword);
 
 }
