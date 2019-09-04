@@ -9,4 +9,17 @@ package com.liumapp.keywordsign.core;
  * date 2019/9/4
  */
 public interface KeywordSign {
+
+    public void checkKeyStore (String ksFileName);
+
+    public void installPfx ();
+
+    public void checkKeyWord ();
+
+    public void signWithoutTimeStamp ();
+
+    public void signWithTimeStamp ();
+
+    public void sign ();
+
 }
