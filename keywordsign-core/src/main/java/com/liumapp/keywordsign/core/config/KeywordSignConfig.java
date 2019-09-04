@@ -32,7 +32,9 @@ public class KeywordSignConfig {
 
     private String timeStampCode = "1zPz3KSTtj5SE7s";
 
-    public KeywordSignConfig() {
+    private String defaultKeyStorePassword = "123456";
+
+    protected KeywordSignConfig() {
     }
 
     public KeywordSignConfig(String tmpPath) {
