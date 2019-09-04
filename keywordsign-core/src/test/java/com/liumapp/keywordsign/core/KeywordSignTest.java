@@ -5,25 +5,18 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
- * file KeywordTest.java
+ * file KeywordSignTest.java
  * author liumapp
  * github https://github.com/liumapp
  * email liumapp.com@gmail.com
  * homepage http://www.liumapp.com
  * date 2019/9/4
  */
-public class KeywordTest {
+public class KeywordSignTest {
 
     @Test
-    public void getKeywordPositionX() {
+    public void testSign () {
 
     }
 
-    @Test
-    public void getKeywordPositionY() {
-    }
-
-    @Test
-    public void buildPositionKeyword() {
-    }
 }
