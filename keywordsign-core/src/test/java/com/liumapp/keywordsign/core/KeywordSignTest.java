@@ -18,7 +18,7 @@ public class KeywordSignTest {
     public void testSign () {
         KeywordSignConfigFactory.buildInstance("./data");
         KeywordSign keywordSign = KeywordSignFactory.getInstance();
-        keywordSign.signWithoutTimeStamp();
+
     }
 
 }

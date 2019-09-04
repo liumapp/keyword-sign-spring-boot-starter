@@ -12,33 +12,19 @@ import com.liumapp.keywordsign.core.keyword.Keyword;
  */
 class KeywordSignCore implements KeywordSign
 {
-    @Override
-    public void checkKeyStore(String ksFileName) {
 
+    @Override
+    public String signWithoutTimeStamp(String ksFileName, String ksPassword, String certAlias, String certPassword, String pdfBase64, String signPic, String signFiled, String keyword) {
+        return null;
     }
 
     @Override
-    public void installPfx() {
-
+    public String signWithTimeStamp(String ksFileName, String ksPassword, String certAlias, String certPassword, String pdfBase64, String signPic, String signFiled, String keyword) {
+        return null;
     }
 
     @Override
-    public void checkKeyWord() {
-
-    }
-
-    @Override
-    public void signWithoutTimeStamp() {
-
-    }
-
-    @Override
-    public void signWithTimeStamp() {
-
-    }
-
-    @Override
-    public void sign() {
-
+    public String sign(String ksFileName, String ksPassword, String certAlias, String certPassword, String pdfBase64, String signPic, String signFiled, String keyword) {
+        return null;
     }
 }

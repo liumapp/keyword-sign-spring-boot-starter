@@ -10,16 +10,32 @@ package com.liumapp.keywordsign.core;
  */
 public interface KeywordSign {
 
-    public void checkKeyStore (String ksFileName);
+    public String signWithoutTimeStamp (String ksFileName,
+                                      String ksPassword,
+                                      String certAlias,
+                                      String certPassword,
+                                      String pdfBase64,
+                                      String signPic,
+                                      String signFiled,
+                                      String keyword
+                                      );
 
-    public void installPfx ();
+    public String signWithTimeStamp (String ksFileName,
+                                   String ksPassword,
+                                   String certAlias,
+                                   String certPassword,
+                                   String pdfBase64,
+                                   String signPic,
+                                   String signFiled,
+                                   String keyword);
 
-    public void checkKeyWord ();
-
-    public void signWithoutTimeStamp ();
-
-    public void signWithTimeStamp ();
-
-    public void sign ();
+    public String sign (String ksFileName,
+                      String ksPassword,
+                      String certAlias,
+                      String certPassword,
+                      String pdfBase64,
+                      String signPic,
+                      String signFiled,
+                      String keyword);
 
 }
