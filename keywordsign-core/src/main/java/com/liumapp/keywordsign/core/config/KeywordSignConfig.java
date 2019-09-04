@@ -1,9 +1,6 @@
 package com.liumapp.keywordsign.core.config;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
+import lombok.*;
 
 /**
  * file KeywordSignConfig.java
@@ -31,6 +28,10 @@ public class KeywordSignConfig {
      */
     private String afterKeywordSymbok = "\\}";
 
+    private String timeStampUrl = "http://ets.wotrus.com/tk_3_";
+
+    private String timeStampCode = "1zPz3KSTtj5SE7s";
+
     public KeywordSignConfig() {
     }
 
@@ -42,5 +43,13 @@ public class KeywordSignConfig {
         this.tmpPath = tmpPath;
         this.beforeKeywordSymbol = beforeKeywordSymbol;
         this.afterKeywordSymbok = afterKeywordSymbok;
+    }
+
+    public KeywordSignConfig(String tmpPath, String beforeKeywordSymbol, String afterKeywordSymbok, String timeStampUrl, String timeStampCode) {
+        this.tmpPath = tmpPath;
+        this.beforeKeywordSymbol = beforeKeywordSymbol;
+        this.afterKeywordSymbok = afterKeywordSymbok;
+        this.timeStampUrl = timeStampUrl;
+        this.timeStampCode = timeStampCode;
     }
 }

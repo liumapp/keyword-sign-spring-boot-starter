@@ -1,6 +1,4 @@
-package com.liumapp.keywordsign.core;
-
-import com.liumapp.keywordsign.core.config.KeywordSignConfig;
+package com.liumapp.keywordsign.core.config;
 
 import java.security.InvalidParameterException;
 
@@ -20,7 +18,7 @@ public class KeywordSignConfigFactory {
         private static final KeywordSignConfigFactory INSTANCE = new KeywordSignConfigFactory();
     }
 
-    private KeywordSignConfigFactory () {
+    private KeywordSignConfigFactory() {
 
     }
 
@@ -34,6 +32,10 @@ public class KeywordSignConfigFactory {
 
     public static void buildInstance (String tmpPath, String beforeKeywordSymbol, String afterKeywordSymbol) {
         KeywordSignConfigFactoryHolder.INSTANCE.buildKeywordSignConfig(tmpPath, beforeKeywordSymbol, afterKeywordSymbol);
+    }
+
+    public static void buildInstance (String tmpPath, String beforeKeywordSymbol, String afterKeywordSymbol, String timestampUrl, String timestampCode) {
+        KeywordSignConfigFactoryHolder.INSTANCE.buildKeywordSignConfig(tmpPath, beforeKeywordSymbol, afterKeywordSymbol, timestampUrl, timestampCode);
     }
 
     public KeywordSignConfig getKeywordSignConfig () {
@@ -50,6 +52,15 @@ public class KeywordSignConfigFactory {
 
     public void buildKeywordSignConfig (String tmpPath, String beforeKeywordSymbol, String afterKeywordSymbol) {
         this.keywordSignConfig = new KeywordSignConfig(tmpPath, beforeKeywordSymbol, afterKeywordSymbol);
+    }
+
+    public void buildKeywordSignConfig (String tmpPath,
+                                        String beforeKeywordSymbol,
+                                        String afterKeywordSymbol,
+                                        String timestampUrl,
+                                        String timestampCode
+                                        ) {
+        this.keywordSignConfig = new KeywordSignConfig(tmpPath, beforeKeywordSymbol, afterKeywordSymbol, timestampUrl, timestampCode);
     }
 
 }
