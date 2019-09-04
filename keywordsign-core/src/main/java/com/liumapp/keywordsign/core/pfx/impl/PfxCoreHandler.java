@@ -12,9 +12,12 @@ import com.liumapp.keywordsign.core.pfx.PfxHandler;
  */
 public class PfxCoreHandler implements PfxHandler {
 
+    protected PfxCoreHandler() {
+    }
+
     @Override
     public void writePfxToKeyStore(String keystoreFileName, String keystorePassword, String certAlias, String pfxBase64, String pfxPassword) {
-            
+
     }
 
 }
