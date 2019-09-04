@@ -1,5 +1,8 @@
 package com.liumapp.keywordsign.core.keyword;
 
+import java.util.HashMap;
+import java.util.List;
+
 /**
  * file Keyword.java
  * author liumapp
@@ -11,20 +14,14 @@ package com.liumapp.keywordsign.core.keyword;
 public interface Keyword {
 
     /**
-     * 获取关键词x坐标
+     * 关键词坐标集合
+     * list: 复数个关键词区域的坐标集合
+     * map.get("page") : 关键词所在页数
+     * map.get("x") : 关键词x坐标
+     * map.get("y") : 关键词y坐标
+     * float
      * @return
      */
-    public Float getKeywordPositionX();
-
-    /**
-     * 获取关键词y坐标
-     * @return
-     */
-    public Float getKeywordPositionY();
-
-    /**
-     * 设置关键词
-     */
-    public void buildPositionKeyword(String word);
+    public List<HashMap<String, Float>> getKeywordPosition (String pdfBase64, String keyword) ;
 
 }
