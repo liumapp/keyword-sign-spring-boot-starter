@@ -27,6 +27,4 @@ public interface Keyword {
      */
     public void buildPositionKeyword (String word);
 
-
-
 }

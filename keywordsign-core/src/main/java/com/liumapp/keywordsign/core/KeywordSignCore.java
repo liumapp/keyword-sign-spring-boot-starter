@@ -22,9 +22,7 @@ class KeywordSignCore implements Keyword
     }
 
     @Override
-    public void buildPositionKeyword() {
+    public void buildPositionKeyword(String word) {
 
     }
-
-
 }
