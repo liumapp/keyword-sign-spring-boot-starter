@@ -33,12 +33,13 @@ public class WritePfxToJksDecorator extends KeywordSignTemplate {
 
     @Override
     public String signWithTimeStamp(String ksFileName, String ksPassword, String certAlias, String pfxBase64, String pfxPassword, String pdfBase64, String signPic, String signFiled, String keyword, String timestampUrl) {
-        
-        return super.signWithTimeStamp(ksFileName, ksPassword, certAlias, pfxBase64, pfxPassword, pdfBase64, signPic, signFiled, keyword, timestampUrl);
+        pfxHandler.writePfxToKeyStore(ksFileName, ksPassword, certAlias, pfxBase64, pfxPassword);
+        return super.signWithTimeStamp(ksFileName, ksPassword, certAlias, pfxPassword, pdfBase64, signPic, signFiled, keyword, timestampUrl);
     }
 
     @Override
     public String sign(String ksFileName, String ksPassword, String certAlias, String pfxBase64, String pfxPassword, String pdfBase64, String signPic, String signFiled, String keyword) {
-        return super.sign(ksFileName, ksPassword, certAlias, pfxBase64, pfxPassword, pdfBase64, signPic, signFiled, keyword);
+        pfxHandler.writePfxToKeyStore(ksFileName, ksPassword, certAlias, pfxBase64, pfxPassword);
+        return super.sign(ksFileName, ksPassword, certAlias, pfxPassword, pdfBase64, signPic, signFiled, keyword);
     }
 }
