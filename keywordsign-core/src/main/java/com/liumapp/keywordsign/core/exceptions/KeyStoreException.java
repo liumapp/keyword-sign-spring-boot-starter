@@ -9,4 +9,24 @@ package com.liumapp.keywordsign.core.exceptions;
  * date 2019/9/4
  */
 public class KeyStoreException extends RuntimeException {
+
+    public KeyStoreException() {
+        super();
+    }
+
+    public KeyStoreException(String message) {
+        super(message);
+    }
+
+    public KeyStoreException(String message, Throwable cause) {
+        super(message, cause);
+    }
+
+    public KeyStoreException(Throwable cause) {
+        super(cause);
+    }
+
+    protected KeyStoreException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
+        super(message, cause, enableSuppression, writableStackTrace);
+    }
 }

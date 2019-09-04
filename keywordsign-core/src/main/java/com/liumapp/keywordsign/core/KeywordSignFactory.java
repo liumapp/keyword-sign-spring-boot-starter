@@ -1,5 +1,7 @@
 package com.liumapp.keywordsign.core;
 
+import com.liumapp.keywordsign.core.decorators.CheckJksDecorator;
+
 /**
  * file KeywordSignFactory.java
  * author liumapp
@@ -26,7 +28,7 @@ public class KeywordSignFactory {
 
     private KeywordSign getCoreInstance () {
         if (this.keywordSign == null) {
-            this.keywordSign = new KeywordSignCore();
+            this.keywordSign = new CheckJksDecorator(new KeywordSignCore());
         }
         return this.keywordSign;
     }
