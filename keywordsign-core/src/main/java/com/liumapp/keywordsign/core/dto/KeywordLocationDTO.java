@@ -14,6 +14,6 @@ import lombok.Data;
 @Data
 public class KeywordLocationDTO extends JobData {
 
-
+    
 
 }
