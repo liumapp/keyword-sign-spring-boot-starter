@@ -14,8 +14,6 @@ import lombok.RequiredArgsConstructor;
  * date 2019/9/4
  */
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
 public class KeywordSignConfig {
 
     /**
@@ -33,7 +31,16 @@ public class KeywordSignConfig {
      */
     private String afterKeywordSymbok = "\\}";
 
+    public KeywordSignConfig() {
+    }
+
     public KeywordSignConfig(String tmpPath) {
         this.tmpPath = tmpPath;
+    }
+
+    public KeywordSignConfig(String tmpPath, String beforeKeywordSymbol, String afterKeywordSymbok) {
+        this.tmpPath = tmpPath;
+        this.beforeKeywordSymbol = beforeKeywordSymbol;
+        this.afterKeywordSymbok = afterKeywordSymbok;
     }
 }
