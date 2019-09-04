@@ -10,6 +10,11 @@ package com.liumapp.keywordsign.core;
  */
 public interface Keyword {
 
+    public Float getKeywordPositionX ();
+
+    public Float getKeywordPositionY ();
+
+    public void buildPositionKey ();
 
 
 }

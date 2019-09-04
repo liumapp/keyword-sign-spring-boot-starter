@@ -11,4 +11,18 @@ package com.liumapp.keywordsign.core;
 class KeywordSignCore implements Keyword
 {
 
+    @Override
+    public Float getKeywordPositionX() {
+        return null;
+    }
+
+    @Override
+    public Float getKeywordPositionY() {
+        return null;
+    }
+
+    @Override
+    public void buildPositionKey() {
+
+    }
 }
