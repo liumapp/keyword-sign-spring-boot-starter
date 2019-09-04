@@ -10,7 +10,7 @@ package com.liumapp.keywordsign.core;
  */
 public class KeywordSignFactory {
 
-    private Keyword keyword;
+    private KeywordSign keywordSign;
 
     private static class KeywordSignFactoryHolder {
         private static final KeywordSignFactory INSTANCE = new KeywordSignFactory();
@@ -20,15 +20,15 @@ public class KeywordSignFactory {
 
     }
 
-    public static synchronized Keyword getInstance () {
+    public static synchronized KeywordSign getInstance () {
         return KeywordSignFactoryHolder.INSTANCE.getCoreInstance();
     }
 
-    private Keyword getCoreInstance () {
-        if (this.keyword == null) {
-            this.keyword = new KeywordSignCore();
+    private KeywordSign getCoreInstance () {
+        if (this.keywordSign == null) {
+            this.keywordSign = new KeywordSignCore();
         }
-        return this.keyword;
+        return this.keywordSign;
     }
 
 

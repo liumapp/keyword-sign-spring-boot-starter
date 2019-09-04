@@ -1,4 +1,4 @@
-package com.liumapp.keywordsign.core;
+package com.liumapp.keywordsign.core.keyword;
 
 /**
  * file Keyword.java
@@ -14,17 +14,17 @@ public interface Keyword {
      * 获取关键词x坐标
      * @return
      */
-    public Float getKeywordPositionX ();
+    public Float getKeywordPositionX();
 
     /**
      * 获取关键词y坐标
      * @return
      */
-    public Float getKeywordPositionY ();
+    public Float getKeywordPositionY();
 
     /**
      * 设置关键词
      */
-    public void buildPositionKeyword (String word);
+    public void buildPositionKeyword(String word);
 
 }

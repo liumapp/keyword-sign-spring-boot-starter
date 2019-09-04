@@ -16,4 +16,5 @@ public class DigitalSignCore implements DigitalSign {
     public String signPDF(String keystoreFile, String keystorePassword, String certAlias, String certPassword, String pdfBase64, String signPicBase64, Float X, Float Y, Float picWith, Float picHeight, String signFiled) {
         return null;
     }
+
 }
