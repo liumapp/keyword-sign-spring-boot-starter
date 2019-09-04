@@ -1,6 +1,8 @@
 package com.liumapp.keywordsign.core.pfx.impl;
 
+import com.liumapp.keywordsign.core.exceptions.KeyStoreException;
 import com.liumapp.keywordsign.core.pfx.PfxHandler;
+import com.liumapp.keywordsign.core.utils.PfxUtil;
 
 /**
  * file PfxCoreHandler.java
@@ -17,6 +19,16 @@ public class PfxCoreHandler implements PfxHandler {
 
     @Override
     public void writePfxToKeyStore(String keystoreFileName, String keystorePassword, String certAlias, String pfxBase64, String pfxPassword) {
+        try {
+            PfxUtil pfxUtil = new PfxUtil();
+            pfxUtil.PfxBase642JKS(pfxBase64,
+                    pfxPassword,
+                    keystoreFileName,
+                    keystorePassword,
+                    certAlias);
+        } catch (Exception e) {
+            throw new KeyStoreException("写入pfx证书失败", e.getCause());
+        }
 
     }
 

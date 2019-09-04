@@ -1,5 +1,6 @@
 package com.liumapp.keywordsign.core.utils;
 
+import com.liumapp.qtools.file.base64.Base64FileTool;
 import org.bouncycastle.util.encoders.Base64;
 
 import java.io.*;
@@ -144,6 +145,37 @@ public class PfxUtil {
             e.printStackTrace();
         }
 
+    }
+
+    public void PfxBase642JKS(String pfxBase64, String pfxPWD, String JKSpath, String jksPWD , String alias) throws Exception {
+        KeyStore inputKeyStore = KeyStore.getInstance("PKCS12");
+        ByteArrayInputStream inputStream;
+        FileInputStream readJKS;
+
+        inputStream = Base64FileTool.decodeBase64ToInputStream(pfxBase64);
+
+        // 将PKCS12格式的数字证书转写入到密钥容器
+        inputKeyStore.load(inputStream, pfxPWD.toCharArray());
+        inputStream.close();
+        KeyStore keyStoreOutPut = KeyStore.getInstance("JKS");
+
+        readJKS = new FileInputStream(JKSpath);
+        keyStoreOutPut.load(readJKS, jksPWD.toCharArray());
+        readJKS.close();
+
+        Enumeration enums = inputKeyStore.aliases();
+        while (enums.hasMoreElements()) {
+            String keyAlias = (String) enums.nextElement();
+            if (inputKeyStore.isKeyEntry(keyAlias)) {
+                Key key = inputKeyStore.getKey(keyAlias, pfxPWD.toCharArray());
+                Certificate[] certChain = inputKeyStore.getCertificateChain(keyAlias);
+                keyStoreOutPut.setKeyEntry(alias, key, pfxPWD.toCharArray(), certChain);
+                certChain[0].getEncoded();
+            }
+        }
+        FileOutputStream out = new FileOutputStream(JKSpath);
+        keyStoreOutPut.store(out, jksPWD.toCharArray());
+        out.close();
     }
 
     /**
