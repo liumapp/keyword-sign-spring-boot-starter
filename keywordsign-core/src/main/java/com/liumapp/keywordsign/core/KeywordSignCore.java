@@ -17,11 +17,6 @@ class KeywordSignCore implements KeywordSign
 {
 
     @Override
-    public String signWithoutTimeStamp(String ksFileName, String ksPassword, String certAlias, String certPassword, String pdfBase64, String signPic, String signFiled, String keyword) {
-        return null;
-    }
-
-    @Override
     public String signWithTimeStamp(String ksFileName, String ksPassword, String certAlias, String certPassword, String pdfBase64, String signPic, String signFiled, String keyword, String timestampUrl) {
         return null;
     }
@@ -37,11 +32,6 @@ class KeywordSignCore implements KeywordSign
                 keyword,
                 KeywordSignConfigFactory.getInstance().getTimeStampUrl() + Sha1Tool.toSHA1(DateTool.getSimpleUTCDateString() + "_" + KeywordSignConfigFactory.getInstance().getTimeStampCode())
                 );
-    }
-
-    @Override
-    public String signWithoutTimeStamp(String ksFileName, String ksPassword, String certAlias, String pfxBase64, String pfxPassword, String pdfBase64, String signPic, String signFiled, String keyword) {
-        return null;
     }
 
     @Override

@@ -18,16 +18,6 @@ public class CheckJksDecorator extends KeywordSignTemplate {
     }
 
     @Override
-    public String signWithoutTimeStamp(String ksFileName, String ksPassword, String certAlias, String certPassword, String pdfBase64, String signPic, String signFiled, String keyword) {
-        return super.signWithoutTimeStamp(ksFileName, ksPassword, certAlias, certPassword, pdfBase64, signPic, signFiled, keyword);
-    }
-
-    @Override
-    public String signWithoutTimeStamp(String ksFileName, String ksPassword, String certAlias, String pfxBase64, String pfxPassword, String pdfBase64, String signPic, String signFiled, String keyword) {
-        return super.signWithoutTimeStamp(ksFileName, ksPassword, certAlias, pfxBase64, pfxPassword, signPic, signFiled, keyword);
-    }
-
-    @Override
     public String signWithTimeStamp(String ksFileName, String ksPassword, String certAlias, String pfxBase64, String pfxPassword, String pdfBase64, String signPic, String signFiled, String keyword, String timestampUrl) {
         return super.signWithTimeStamp(ksFileName, ksPassword, certAlias, pfxBase64, pfxPassword, signPic, signFiled, keyword, timestampUrl);
     }
