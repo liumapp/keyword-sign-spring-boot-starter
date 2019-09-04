@@ -1,6 +1,8 @@
 package com.liumapp.keywordsign.core.config;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  * file KeywordSignConfig.java
@@ -11,6 +13,8 @@ import lombok.Data;
  * date 2019/9/4
  */
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class KeywordSignConfig {
 
     /**
