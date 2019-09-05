@@ -10,7 +10,7 @@
 <dependency>
     <groupId>com.liumapp.keywordsign.core</groupId>
     <artifactId>keywordsign-core</artifactId>
-    <version>v1.0.0</version>
+    <version>v1.0.1</version>
 </dependency>
 ````
 
@@ -20,7 +20,7 @@
 <dependency>
     <groupId>com.liumapp.keywordsign.starter</groupId>
     <artifactId>keywordsign-spring-boot-starter</artifactId>
-    <version>v1.0.0</version>
+    <version>v1.0.1</version>
 </dependency>    
 ````
 
