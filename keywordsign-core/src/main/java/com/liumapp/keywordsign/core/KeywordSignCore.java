@@ -83,7 +83,7 @@ class KeywordSignCore implements KeywordSign {
                     .setSignatureGraphic(ImageDataFactory.create(Base64FileTool.decodeBase64ToOutputStream(signPic).toByteArray()));
 //            Rectangle rect = new Rectangle(keywordPosition.get("x"), keywordPosition.get("y"), signPicInfo[0], signPicInfo[1]);
             //使用固定长高执行签署
-            Rectangle rect = new Rectangle(keywordPosition.get("x"), keywordPosition.get("y"), 100, 100);
+            Rectangle rect = new Rectangle(keywordPosition.get("x") + KeywordSignConfigFactory.getInstance().getDeviation(), keywordPosition.get("y"), 100, 100);
             int page = Math.round(keywordPosition.get("page"));
             appearance
                     .setPageRect(rect)

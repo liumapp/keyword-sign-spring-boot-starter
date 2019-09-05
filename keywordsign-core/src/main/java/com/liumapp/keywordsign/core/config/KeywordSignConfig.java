@@ -34,6 +34,11 @@ public class KeywordSignConfig {
 
     private String defaultKeyStorePassword = "123456";
 
+    /**
+     * 签署右偏移量(px)
+     */
+    private Integer deviation = 20;
+
     protected KeywordSignConfig() {
     }
 
