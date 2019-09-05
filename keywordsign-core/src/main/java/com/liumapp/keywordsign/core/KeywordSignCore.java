@@ -1,7 +1,10 @@
 package com.liumapp.keywordsign.core;
 
+import com.itextpdf.io.image.ImageData;
+import com.itextpdf.io.image.ImageDataFactory;
 import com.itextpdf.kernel.geom.Rectangle;
 import com.itextpdf.kernel.pdf.PdfReader;
+import com.itextpdf.layout.element.Image;
 import com.itextpdf.signatures.*;
 import com.liumapp.keywordsign.core.config.KeywordSignConfigFactory;
 import com.liumapp.keywordsign.core.exceptions.KeyStoreException;
@@ -74,11 +77,16 @@ class KeywordSignCore implements KeywordSign {
             PdfSignatureAppearance appearance = signer.getSignatureAppearance()
                     .setReason(signReason)
                     .setLocation(signLocation)
-                    .setReuseAppearance(false);
-            Rectangle rect = new Rectangle(keywordPosition.get("x"), keywordPosition.get("y"), signPicInfo[0], signPicInfo[1]);
+                    .setReuseAppearance(false)
+                    .setRenderingMode(PdfSignatureAppearance.RenderingMode.GRAPHIC)
+                    .setSignatureGraphic(ImageDataFactory.create(Base64FileTool.decodeBase64ToOutputStream(signPic).toByteArray()));
+//            Rectangle rect = new Rectangle(keywordPosition.get("x"), keywordPosition.get("y"), signPicInfo[0], signPicInfo[1]);
+            //使用固定长高执行签署
+            Rectangle rect = new Rectangle(keywordPosition.get("x"), keywordPosition.get("y"), 100, 100);
+            int page = Math.round(keywordPosition.get("page"));
             appearance
                     .setPageRect(rect)
-                    .setPageNumber(Float.floatToIntBits(keywordPosition.get("page")));
+                    .setPageNumber(page);
             signer.setFieldName(signFiled);
             // Creating the signature
             PrivateKey pk = keyStore.readPrivateKeyFromKeyStore(
@@ -96,6 +104,7 @@ class KeywordSignCore implements KeywordSign {
                     certPassword
             ), null, null,  new TSAClientBouncyCastle(timestampUrl), 0, PdfSigner.CryptoStandard.CMS);
         } catch (Exception e) {
+            e.printStackTrace();
             throw new KeyStoreException("签署PDF失败", e.getCause());
         }
         return Base64FileTool.ByteArrayToBase64(resultStream.toByteArray());

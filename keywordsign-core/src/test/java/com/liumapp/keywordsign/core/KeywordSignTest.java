@@ -24,7 +24,7 @@ public class KeywordSignTest {
     public void testSign () throws IOException {
         KeywordSignConfigFactory.buildInstance("./data");
         KeywordSign keywordSign = KeywordSignFactory.getInstance();
-        String signedPdfBase64 = keywordSign.sign("./demo.ks",
+        String signedPdfBase64 = keywordSign.sign("./data/demo.ks",
                 "123456",
                 "liumapp",
                 Base64FileTool.filePathToBase64("./data/liumapp.pfx"),
