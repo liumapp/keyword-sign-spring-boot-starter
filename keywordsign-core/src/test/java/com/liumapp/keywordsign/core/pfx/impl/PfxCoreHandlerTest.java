@@ -24,7 +24,6 @@ public class PfxCoreHandlerTest {
      */
     @Test
     public void writePfxToKeyStore() throws IOException {
-        KeywordSignConfigFactory.buildInstance("./data");
         PfxHandler pfxHandler = PfxHandlerFactory.getInstance();
         pfxHandler.writePfxToKeyStore("./data/demo.ks",
                 "123456",

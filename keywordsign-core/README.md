@@ -33,8 +33,6 @@ Assert.assertEquals("\\]", keywordSignConfig1.getAfterKeywordSymbok());
 
 * 检查与创建证书容器KeyStore
 
-* 获取合同关键词位置信息
-
 * 获取签章图片尺寸数据
 
 * 写入pfx证书到证书容器中
@@ -62,3 +60,63 @@ for (HashMap<String, Float> item : results) {
 
 ### 检查与创建证书容器KeyStore
 
+检查证书容器是否存在，不存则创建
+
+PS: 证书容器并不是一个普通的文件，而是一个JavaKeyStore
+
+````java
+KeyStore keyStore = KeyStoreFactory.getInstance();
+keyStore.chkKeyStoreFile("./data/demo.ks");
+Assert.assertEquals(true, FileTool.isFileExists("./data/demo.ks"));
+````
+
+### 获取签章图片尺寸数据
+
+获取base64格式的图片尺寸信息
+
+````java
+SignPic signPic = SignPicFactory.getInstance();
+int[] result = signPic.readWidthAndHeightFromBase64Pic(Base64FileTool.filePathToBase64("./data/me.jpg"));
+System.out.println("width is : " + result[0] + " and height is : " + result[1]);
+Assert.assertEquals(568, result[0]);
+Assert.assertEquals(568, result[1]);
+````
+
+### 写入pfx证书到证书容器中
+
+在已经创建好证书容器的前提下，将一份PFX格式的数字证书，写入证书容器中
+
+以下代码执行后，请使用命令： keytool -v -list -keystore ./data/demo.ks 查看容器中的证书数据
+
+````java
+PfxHandler pfxHandler = PfxHandlerFactory.getInstance();
+pfxHandler.writePfxToKeyStore("./data/demo.ks",
+        "123456",
+        "liumapp",
+        Base64FileTool.filePathToBase64("./data/liumapp.pfx"),
+        "123123123"
+        );
+````
+
+### PDF合同关键词定位签署
+
+整个项目的核心功能，输入证书容器路径、证书容器密码、证书别名、PFX格式的证书base64值、证书密码、签章图片、签章字段、签署理由、签署地址、关键词这些数据
+
+返回签好的PDF合同Base64的值
+
+````java
+KeywordSign keywordSign = KeywordSignFactory.getInstance();
+String signedPdfBase64 = keywordSign.sign("./data/demo.ks",
+        "123456",
+        "liumapp",
+        Base64FileTool.filePathToBase64("./data/liumapp.pfx"),
+        "123123123",
+        Base64FileTool.filePathToBase64("./data/test.pdf"),
+        Base64FileTool.filePathToBase64("./data/me.jpg"),
+        "signFiled1",
+        "this is sign reason",
+        "this is sign location",
+        "year"
+        );
+Base64FileTool.saveBase64File(signedPdfBase64, "./data/result.pdf");
+````

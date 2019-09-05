@@ -22,7 +22,6 @@ public class KeywordSignTest {
 
     @Test
     public void testSign () throws IOException {
-        KeywordSignConfigFactory.buildInstance("./data");
         KeywordSign keywordSign = KeywordSignFactory.getInstance();
         String signedPdfBase64 = keywordSign.sign("./data/demo.ks",
                 "123456",

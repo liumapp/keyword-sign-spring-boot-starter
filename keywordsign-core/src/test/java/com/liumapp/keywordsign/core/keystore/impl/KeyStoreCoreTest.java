@@ -21,7 +21,6 @@ public class KeyStoreCoreTest {
 
     @Test
     public void chkKeyStoreFile() {
-        KeywordSignConfigFactory.buildInstance("./data");
         KeyStore keyStore = KeyStoreFactory.getInstance();
         keyStore.chkKeyStoreFile("./data/demo.ks");
         Assert.assertEquals(true, FileTool.isFileExists("./data/demo.ks"));
