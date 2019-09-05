@@ -22,24 +22,32 @@ public class WritePfxToJksDecorator extends KeywordSignTemplate {
     }
 
     @Override
-    public String signWithTimeStamp(String ksFileName, String ksPassword, String certAlias, String certPassword, String pdfBase64, String signPic, String signFiled, String keyword, String timestampUrl) {
-        return super.signWithTimeStamp(ksFileName, ksPassword, certAlias, certPassword, pdfBase64, signPic, signFiled, keyword, timestampUrl);
+    public String signWithTimeStamp(String ksFileName, String ksPassword, String certAlias, String certPassword, String pdfBase64, String signPic, String signFiled, String signReason,
+                                    String signLocation, String keyword, String timestampUrl) {
+        return super.signWithTimeStamp(ksFileName, ksPassword, certAlias, certPassword, pdfBase64, signPic, signFiled, signReason,
+                signLocation, keyword, timestampUrl);
     }
 
     @Override
-    public String sign(String ksFileName, String ksPassword, String certAlias, String certPassword, String pdfBase64, String signPic, String signFiled, String keyword) {
-        return super.sign(ksFileName, ksPassword, certAlias, certPassword, pdfBase64, signPic, signFiled, keyword);
+    public String sign(String ksFileName, String ksPassword, String certAlias, String certPassword, String pdfBase64, String signPic, String signFiled, String signReason,
+                       String signLocation, String keyword) {
+        return super.sign(ksFileName, ksPassword, certAlias, certPassword, pdfBase64, signPic, signFiled, signReason,
+                signLocation, keyword);
     }
 
     @Override
-    public String signWithTimeStamp(String ksFileName, String ksPassword, String certAlias, String pfxBase64, String pfxPassword, String pdfBase64, String signPic, String signFiled, String keyword, String timestampUrl) {
+    public String signWithTimeStamp(String ksFileName, String ksPassword, String certAlias, String pfxBase64, String pfxPassword, String pdfBase64, String signPic, String signFiled, String signReason,
+                                    String signLocation, String keyword, String timestampUrl) {
         pfxHandler.writePfxToKeyStore(ksFileName, ksPassword, certAlias, pfxBase64, pfxPassword);
-        return super.signWithTimeStamp(ksFileName, ksPassword, certAlias, pfxPassword, pdfBase64, signPic, signFiled, keyword, timestampUrl);
+        return super.signWithTimeStamp(ksFileName, ksPassword, certAlias, pfxPassword, pdfBase64, signPic, signFiled, signReason,
+                signLocation, keyword, timestampUrl);
     }
 
     @Override
-    public String sign(String ksFileName, String ksPassword, String certAlias, String pfxBase64, String pfxPassword, String pdfBase64, String signPic, String signFiled, String keyword) {
+    public String sign(String ksFileName, String ksPassword, String certAlias, String pfxBase64, String pfxPassword, String pdfBase64, String signPic, String signFiled, String signReason,
+                       String signLocation, String keyword) {
         pfxHandler.writePfxToKeyStore(ksFileName, ksPassword, certAlias, pfxBase64, pfxPassword);
-        return super.sign(ksFileName, ksPassword, certAlias, pfxPassword, pdfBase64, signPic, signFiled, keyword);
+        return super.sign(ksFileName, ksPassword, certAlias, pfxPassword, pdfBase64, signPic, signFiled, signReason,
+                signLocation, keyword);
     }
 }
