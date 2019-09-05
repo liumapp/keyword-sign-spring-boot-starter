@@ -54,4 +54,16 @@ public class KeywordSignConfig {
         this.timeStampUrl = timeStampUrl;
         this.timeStampCode = timeStampCode;
     }
+
+    @Override
+    public String toString() {
+        return "KeywordSignConfig{" +
+                "tmpPath='" + tmpPath + '\'' +
+                ", beforeKeywordSymbol='" + beforeKeywordSymbol + '\'' +
+                ", afterKeywordSymbok='" + afterKeywordSymbok + '\'' +
+                ", timeStampUrl='" + timeStampUrl + '\'' +
+                ", timeStampCode='" + timeStampCode + '\'' +
+                ", defaultKeyStorePassword='" + defaultKeyStorePassword + '\'' +
+                '}';
+    }
 }
