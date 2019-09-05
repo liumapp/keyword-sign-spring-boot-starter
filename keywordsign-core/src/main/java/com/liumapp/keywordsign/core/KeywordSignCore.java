@@ -66,8 +66,9 @@ class KeywordSignCore implements KeywordSign {
             //暂时只支持单关键词签署
             HashMap<String, Float> keywordPosition = null;
             try {
-                keywordPosition = keyWord.getKeywordPosition(pdfBase64, keyword).get(0);
-            } catch (NullPointerException e) {
+                List<HashMap<String, Float>> positionList = keyWord.getKeywordPosition(pdfBase64, keyword);
+                keywordPosition = positionList.get(positionList.size() - 1);
+            } catch (Exception e) {
                 throw new KeyStoreException("没有找到合同签署关键词", e.getCause());
             }
 
