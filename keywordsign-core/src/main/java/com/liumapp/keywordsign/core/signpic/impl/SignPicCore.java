@@ -12,6 +12,9 @@ import com.liumapp.keywordsign.core.signpic.SignPic;
  */
 public class SignPicCore implements SignPic {
 
+    protected SignPicCore() {
+    }
+
     @Override
     public int[] readWidthAndHeightFromBase64Pic(String picBase64) {
         return new int[0];
