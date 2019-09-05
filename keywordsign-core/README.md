@@ -2,6 +2,28 @@
 
 关键词定位签署功能使用文档
 
+## 获取方式
+
+通过maven获取：
+
+````mxml
+<dependency>
+    <groupId>com.liumapp.keywordsign.core</groupId>
+    <artifactId>keywordsign-core</artifactId>
+    <version>v1.0.0</version>
+</dependency>
+````
+
+或者直接获取支持Spring Boot的Starter依赖：
+
+````mxml
+<dependency>
+    <groupId>com.liumapp.keywordsign.starter</groupId>
+    <artifactId>keywordsign-spring-boot-starter</artifactId>
+    <version>v1.0.0</version>
+</dependency>    
+````
+
 ## 默认配置
 
 配置项 | 类型 | 默认值 | 描述
