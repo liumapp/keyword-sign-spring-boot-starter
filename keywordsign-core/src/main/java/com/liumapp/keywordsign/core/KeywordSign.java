@@ -33,6 +33,8 @@ public interface KeywordSign {
                                      String pdfBase64,
                                      String signPic,
                                      String signFiled,
+                                     String signReason,
+                                     String signLocation,
                                      String keyword,
                                      String timestampUrl
     );
@@ -59,6 +61,8 @@ public interface KeywordSign {
                                    String pdfBase64,
                                    String signPic,
                                    String signFiled,
+                                   String signReason,
+                                   String signLocation,
                                    String keyword,
                                    String timestampUrl
                                      );
@@ -83,6 +87,8 @@ public interface KeywordSign {
                       String pdfBase64,
                       String signPic,
                       String signFiled,
+                      String signReason,
+                      String signLocation,
                       String keyword);
 
 
@@ -109,6 +115,8 @@ public interface KeywordSign {
                         String pdfBase64,
                         String signPic,
                         String signFiled,
+                        String signReason,
+                        String signLocation,
                         String keyword);
 
 }
