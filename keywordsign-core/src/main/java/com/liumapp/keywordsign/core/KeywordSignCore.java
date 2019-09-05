@@ -84,8 +84,8 @@ class KeywordSignCore implements KeywordSign
             PdfSigner signer = new PdfSigner(pdfReader, resultStream, false);
             // Creating the appearance
             PdfSignatureAppearance appearance = signer.getSignatureAppearance()
-                    .setReason(reason)
-                    .setLocation(location)
+                    .setReason(signReason)
+                    .setLocation(signLocation)
                     .setReuseAppearance(false);
             Rectangle rect = new Rectangle(36, 648, 200, 100);
             appearance

@@ -32,6 +32,8 @@ public class KeywordSignTest {
                 Base64FileTool.filePathToBase64("./data/test.pdf"),
                 Base64FileTool.filePathToBase64("./data/me.jpg"),
                 "signFiled1",
+                "this is sign reason",
+                "this is sign location",
                 "year"
                 );
         Base64FileTool.saveBase64File(signedPdfBase64, "./data/result.pdf");
