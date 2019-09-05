@@ -9,6 +9,8 @@ import com.liumapp.keywordsign.core.keystore.KeyStore;
 import com.liumapp.keywordsign.core.keystore.impl.KeyStoreFactory;
 import com.liumapp.keywordsign.core.keyword.Keyword;
 import com.liumapp.keywordsign.core.keyword.impl.KeywordFactory;
+import com.liumapp.keywordsign.core.signpic.SignPic;
+import com.liumapp.keywordsign.core.signpic.impl.SignPicFactory;
 import com.liumapp.qtools.date.DateTool;
 import com.liumapp.qtools.file.base64.Base64FileTool;
 import com.liumapp.qtools.security.encrypt.Sha1Tool;
@@ -17,6 +19,8 @@ import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.security.PrivateKey;
+import java.util.HashMap;
+import java.util.List;
 
 /**
  * file KeywordSignCore.java
@@ -28,9 +32,11 @@ import java.security.PrivateKey;
  */
 class KeywordSignCore implements KeywordSign {
 
-    private Keyword keyword = KeywordFactory.getInstance();
+    private Keyword keyWord = KeywordFactory.getInstance();
 
     private KeyStore keyStore = KeyStoreFactory.getInstance();
+
+    private SignPic signPic = SignPicFactory.getInstance();
 
     /**
      * 真正做事情的方法
@@ -53,15 +59,26 @@ class KeywordSignCore implements KeywordSign {
             resultStream = new ByteArrayOutputStream();
             PdfReader pdfReader = new PdfReader(Base64FileTool.decodeBase64ToInputStream(pdfBase64));
             PdfSigner signer = new PdfSigner(pdfReader, resultStream, false);
+
+            //暂时只支持单关键词签署
+            HashMap<String, Float> keywordPosition = null;
+            try {
+                keywordPosition = keyWord.getKeywordPosition(pdfBase64, keyword).get(0);
+            } catch (NullPointerException e) {
+                throw new KeyStoreException("没有找到合同签署关键词", e.getCause());
+            }
+
+            int[] signPicInfo = this.signPic.readWidthAndHeightFromBase64Pic(signPic);
+
             // Creating the appearance
             PdfSignatureAppearance appearance = signer.getSignatureAppearance()
                     .setReason(signReason)
                     .setLocation(signLocation)
                     .setReuseAppearance(false);
-            Rectangle rect = new Rectangle(36, 648, 200, 100);
+            Rectangle rect = new Rectangle(keywordPosition.get("x"), keywordPosition.get("y"), signPicInfo[0], signPicInfo[1]);
             appearance
                     .setPageRect(rect)
-                    .setPageNumber(1);
+                    .setPageNumber(Float.floatToIntBits(keywordPosition.get("page")));
             signer.setFieldName(signFiled);
             // Creating the signature
             PrivateKey pk = keyStore.readPrivateKeyFromKeyStore(
