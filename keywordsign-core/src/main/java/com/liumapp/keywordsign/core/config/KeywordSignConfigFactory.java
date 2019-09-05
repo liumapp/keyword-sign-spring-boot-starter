@@ -40,7 +40,7 @@ public class KeywordSignConfigFactory {
 
     public KeywordSignConfig getKeywordSignConfig () {
         if (this.keywordSignConfig == null) {
-            throw new InvalidParameterException("KeywordSignConfig的参数必须进行设置");
+            this.keywordSignConfig = new KeywordSignConfig();
         }
         return this.keywordSignConfig;
     }

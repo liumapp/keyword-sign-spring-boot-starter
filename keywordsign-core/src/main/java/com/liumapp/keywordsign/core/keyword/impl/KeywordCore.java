@@ -8,6 +8,7 @@ import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.kernel.pdf.canvas.parser.PdfCanvasProcessor;
 import com.itextpdf.kernel.pdf.canvas.parser.listener.IPdfTextLocation;
 import com.itextpdf.kernel.pdf.canvas.parser.listener.RegexBasedLocationExtractionStrategy;
+import com.liumapp.keywordsign.core.config.KeywordSignConfigFactory;
 import com.liumapp.keywordsign.core.exceptions.KeyStoreException;
 import com.liumapp.keywordsign.core.keyword.Keyword;
 import com.liumapp.qtools.file.base64.Base64FileTool;
@@ -39,7 +40,7 @@ public class KeywordCore implements Keyword {
 
             for (int i = 1; i <= pdfDocument.getNumberOfPages(); i++) {
                 PdfPage page = pdfDocument.getPage(i);
-                RegexBasedLocationExtractionStrategy strategy = new RegexBasedLocationExtractionStrategy(keyword);
+                RegexBasedLocationExtractionStrategy strategy = new RegexBasedLocationExtractionStrategy(KeywordSignConfigFactory.getInstance().getBeforeKeywordSymbol() + keyword + KeywordSignConfigFactory.getInstance().getAfterKeywordSymbok());
                 PdfCanvasProcessor canvasProcessor = new PdfCanvasProcessor(strategy);
                 canvasProcessor.processPageContent(page);
                 Collection<IPdfTextLocation> resultantLocations = strategy.getResultantLocations();
