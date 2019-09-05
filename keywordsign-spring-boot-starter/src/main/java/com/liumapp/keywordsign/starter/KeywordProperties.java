@@ -38,4 +38,15 @@ public class KeywordProperties {
 
     private String defaultKeyStorePassword = "123456";
 
+    /**
+     * 签署横向偏移量(px)
+     */
+    private Integer xDeviation = 50;
+
+    /**
+     * 签署纵向偏移量(px)
+     */
+    private Integer yDeviation = -50;
+
+
 }

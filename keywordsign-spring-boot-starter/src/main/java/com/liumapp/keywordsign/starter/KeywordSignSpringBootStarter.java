@@ -41,6 +41,8 @@ public class KeywordSignSpringBootStarter {
         keywordSignConfig.setTimeStampUrl(noNull(keywordProperties.getTimeStampUrl(), "keyword的时间戳服务地址不能为空"));
         keywordSignConfig.setTimeStampCode(noNull(keywordProperties.getTimeStampCode(), "keyword的时间戳服务码不能为空"));
         keywordSignConfig.setDefaultKeyStorePassword(noNull(keywordProperties.getDefaultKeyStorePassword(), "keyword的默认证书容器密码不能为空"));
+        keywordSignConfig.setXDeviation(keywordProperties.getXDeviation());
+        keywordSignConfig.setYDeviation(keywordProperties.getYDeviation());
         return keywordSignConfig;
     }
 
