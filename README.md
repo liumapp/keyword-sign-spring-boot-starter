@@ -36,6 +36,8 @@ afterKeywordSymbok | String | "\\}" | 关键词后置修饰符
 timeStampUrl | String | ... | 时间戳服务地址
 timeStampCode | String | ... | 时间戳服务码
 defaultKeyStorePassword | String | "123456" | 默认生成的证书容器密码
+xDeviation | Integer | 50 | 签章水平方向偏移量，单位px(正数向右，负数向左)
+yDeviation | Integer | -50 | 签章竖直方向偏移量，单位px(正数向上，负数向下)
 
 修改配置方法
 
