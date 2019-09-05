@@ -62,9 +62,6 @@ public class KeyStoreCore implements KeyStore {
         return true;
     }
 
-    @Override
-    public void writePfxToKeyStore(String pfxBase64, String certPassword, String alias) {
 
-    }
 
 }

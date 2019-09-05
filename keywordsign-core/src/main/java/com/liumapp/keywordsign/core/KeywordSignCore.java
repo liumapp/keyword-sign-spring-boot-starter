@@ -6,6 +6,7 @@ import com.itextpdf.signatures.*;
 import com.liumapp.keywordsign.core.config.KeywordSignConfigFactory;
 import com.liumapp.keywordsign.core.exceptions.KeyStoreException;
 import com.liumapp.keywordsign.core.keyword.Keyword;
+import com.liumapp.keywordsign.core.keyword.impl.KeywordFactory;
 import com.liumapp.qtools.date.DateTool;
 import com.liumapp.qtools.file.base64.Base64FileTool;
 import com.liumapp.qtools.security.encrypt.Sha1Tool;
@@ -23,6 +24,8 @@ import java.io.IOException;
  */
 class KeywordSignCore implements KeywordSign
 {
+
+    private Keyword keyword = KeywordFactory.getInstance();
 
     /**
      * 不需要做任何操作，保留即可
@@ -101,6 +104,8 @@ class KeywordSignCore implements KeywordSign
         }
         return null;
     }
+
+
 
     @Override
     public String sign(String ksFileName, String ksPassword, String certAlias, String pfxBase64, String pfxPassword, String pdfBase64, String signPic, String signFiled, String signReason,

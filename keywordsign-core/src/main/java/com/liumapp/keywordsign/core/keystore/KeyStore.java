@@ -24,7 +24,5 @@ public interface KeyStore {
      */
     public boolean createKeyStoreFile (String fileName, String keystorePassword);
 
-    public void writePfxToKeyStore (String pfxBase64, String certPassword, String alias);
-
 
 }
