@@ -3,8 +3,6 @@ package com.liumapp.keywordsign.core.keyword.impl;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfPage;
 import com.itextpdf.kernel.pdf.PdfReader;
-import com.itextpdf.kernel.pdf.PdfWriter;
-import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.kernel.pdf.canvas.parser.PdfCanvasProcessor;
 import com.itextpdf.kernel.pdf.canvas.parser.listener.IPdfTextLocation;
 import com.itextpdf.kernel.pdf.canvas.parser.listener.RegexBasedLocationExtractionStrategy;
@@ -12,7 +10,6 @@ import com.liumapp.keywordsign.core.config.KeywordSignConfigFactory;
 import com.liumapp.keywordsign.core.exceptions.KeyStoreException;
 import com.liumapp.keywordsign.core.keyword.Keyword;
 import com.liumapp.qtools.file.base64.Base64FileTool;
-import com.sun.tools.javac.util.BaseFileManager;
 
 import java.util.*;
 

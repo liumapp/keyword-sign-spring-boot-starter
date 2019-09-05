@@ -42,6 +42,7 @@
           <target>1.8</target>
           <encoding>${project.build.sourceEncoding}</encoding>
           <skip>true</skip>
+          <compilerArgument>-XDignore.symbol.file</compilerArgument>
         </configuration>
       </plugin>
       <plugin>
