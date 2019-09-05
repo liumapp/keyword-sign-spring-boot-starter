@@ -22,26 +22,34 @@ public class CheckJksDecorator extends KeywordSignTemplate {
     }
 
     @Override
-    public String signWithTimeStamp(String ksFileName, String ksPassword, String certAlias, String pfxBase64, String pfxPassword, String pdfBase64, String signPic, String signFiled, String keyword, String timestampUrl) {
+    public String signWithTimeStamp(String ksFileName, String ksPassword, String certAlias, String pfxBase64, String pfxPassword, String pdfBase64, String signPic, String signFiled, String signReason,
+                                    String signLocation, String keyword, String timestampUrl) {
         keyStore.chkKeyStoreFile(ksFileName);
-        return super.signWithTimeStamp(ksFileName, ksPassword, certAlias, pfxBase64, pfxPassword, signPic, signFiled, keyword, timestampUrl);
+        return super.signWithTimeStamp(ksFileName, ksPassword, certAlias, pfxBase64, pfxPassword, signPic, signFiled, signReason,
+                signLocation, keyword, timestampUrl);
     }
 
     @Override
-    public String signWithTimeStamp(String ksFileName, String ksPassword, String certAlias, String certPassword, String pdfBase64, String signPic, String signFiled, String keyword, String timestampUrl) {
+    public String signWithTimeStamp(String ksFileName, String ksPassword, String certAlias, String certPassword, String pdfBase64, String signPic, String signFiled, String signReason,
+                                    String signLocation, String keyword, String timestampUrl) {
         keyStore.chkKeyStoreFile(ksFileName);
-        return super.signWithTimeStamp(ksFileName, ksPassword, certAlias, certPassword, pdfBase64, signPic, signFiled, keyword, timestampUrl);
+        return super.signWithTimeStamp(ksFileName, ksPassword, certAlias, certPassword, pdfBase64, signPic, signFiled, signReason,
+                signLocation, keyword, timestampUrl);
     }
 
     @Override
-    public String sign(String ksFileName, String ksPassword, String certAlias, String certPassword, String pdfBase64, String signPic, String signFiled, String keyword) {
+    public String sign(String ksFileName, String ksPassword, String certAlias, String certPassword, String pdfBase64, String signPic, String signFiled, String signReason,
+                       String signLocation, String keyword) {
         keyStore.chkKeyStoreFile(ksFileName);
-        return super.sign(ksFileName, ksPassword, certAlias, certPassword, pdfBase64, signPic, signFiled, keyword);
+        return super.sign(ksFileName, ksPassword, certAlias, certPassword, pdfBase64, signPic, signFiled, signReason,
+                signLocation, keyword);
     }
 
     @Override
-    public String sign(String ksFileName, String ksPassword, String certAlias, String pfxBase64, String pfxPassword, String pdfBase64, String signPic, String signFiled, String keyword) {
+    public String sign(String ksFileName, String ksPassword, String certAlias, String pfxBase64, String pfxPassword, String pdfBase64, String signPic, String signFiled, String signReason,
+                       String signLocation, String keyword) {
         keyStore.chkKeyStoreFile(ksFileName);
-        return super.sign(ksFileName, ksPassword, certAlias, pfxBase64, pfxPassword, pdfBase64, signPic, signFiled, keyword);
+        return super.sign(ksFileName, ksPassword, certAlias, pfxBase64, pfxPassword, pdfBase64, signPic, signFiled, signReason,
+                signLocation, keyword);
     }
 }
