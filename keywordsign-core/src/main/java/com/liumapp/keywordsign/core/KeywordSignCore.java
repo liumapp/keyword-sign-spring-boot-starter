@@ -39,8 +39,6 @@ class KeywordSignCore implements KeywordSign {
 
     private KeyStore keyStore = KeyStoreFactory.getInstance();
 
-    private SignPic signPic = SignPicFactory.getInstance();
-
     /**
      * 真正做事情的方法
      * @param ksFileName
@@ -72,8 +70,6 @@ class KeywordSignCore implements KeywordSign {
                 throw new KeyStoreException("没有找到合同签署关键词", e.getCause());
             }
 
-            int[] signPicInfo = this.signPic.readWidthAndHeightFromBase64Pic(signPic);
-
             // Creating the appearance
             PdfSignatureAppearance appearance = signer.getSignatureAppearance()
                     .setReason(signReason)
@@ -81,9 +77,8 @@ class KeywordSignCore implements KeywordSign {
                     .setReuseAppearance(false)
                     .setRenderingMode(PdfSignatureAppearance.RenderingMode.GRAPHIC)
                     .setSignatureGraphic(ImageDataFactory.create(Base64FileTool.decodeBase64ToOutputStream(signPic).toByteArray()));
-//            Rectangle rect = new Rectangle(keywordPosition.get("x"), keywordPosition.get("y"), signPicInfo[0], signPicInfo[1]);
             //使用固定长高执行签署
-            Rectangle rect = new Rectangle(keywordPosition.get("x") + KeywordSignConfigFactory.getInstance().getDeviation(), keywordPosition.get("y"), 100, 100);
+            Rectangle rect = new Rectangle(keywordPosition.get("x") + KeywordSignConfigFactory.getInstance().getXDeviation(), keywordPosition.get("y") + KeywordSignConfigFactory.getInstance().getYDeviation(), 100, 100);
             int page = Math.round(keywordPosition.get("page"));
             appearance
                     .setPageRect(rect)
