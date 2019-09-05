@@ -13,10 +13,7 @@ import com.liumapp.keywordsign.core.keyword.Keyword;
 import com.liumapp.qtools.file.base64.Base64FileTool;
 import com.sun.tools.javac.util.BaseFileManager;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 /**
  * file KeywordCore.java
@@ -34,32 +31,31 @@ public class KeywordCore implements Keyword {
 
     @Override
     public List<HashMap<String, Float>> getKeywordPosition(String pdfBase64, String keyword) {
+        List<HashMap<String, Float>> resultMaps = null;
         try {
             PdfReader reader = new PdfReader(Base64FileTool.decodeBase64ToInputStream(pdfBase64));
             PdfDocument pdfDocument = new PdfDocument(reader);
-            List<HashMap<String, Float>> resultMaps = new ArrayList<>();
+            resultMaps = new ArrayList<>();
 
             for (int i = 1; i <= pdfDocument.getNumberOfPages(); i++) {
                 PdfPage page = pdfDocument.getPage(i);
-                
-            }
-            List<OverAreaDTO> overAreaDTOS = new ArrayList<OverAreaDTO>();
-
-//            for (String key : keyMap.keySet()) {
-
-                PdfPage page = pdfDocument.getPage(i);
-
-                RegexBasedLocationExtractionStrategy strategy = new RegexBasedLocationExtractionStrategy(keyMap.get(key));
+                RegexBasedLocationExtractionStrategy strategy = new RegexBasedLocationExtractionStrategy(keyword);
                 PdfCanvasProcessor canvasProcessor = new PdfCanvasProcessor(strategy);
                 canvasProcessor.processPageContent(page);
                 Collection<IPdfTextLocation> resultantLocations = strategy.getResultantLocations();
-                PdfCanvas pdfCanvas = new PdfCanvas(page);
-                pdfCanvas.setLineWidth(0.5f);
+                for (IPdfTextLocation location : resultantLocations) {
+                    HashMap<String, Float> item = new HashMap<>();
+                    item.put("page", (float) i);
+                    item.put("x", location.getRectangle().getX());
+                    item.put("y", location.getRectangle().getY());
+                    resultMaps.add(item);
+                }
+            }
         } catch(Exception e){
             throw new KeyStoreException("获取关键词位置信息出现异常", e.getCause());
         }
 
-            return null;
-        }
+        return resultMaps;
+    }
 
 }
