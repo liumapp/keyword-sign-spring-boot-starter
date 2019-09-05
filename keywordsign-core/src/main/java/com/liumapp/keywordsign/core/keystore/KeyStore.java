@@ -1,5 +1,7 @@
 package com.liumapp.keywordsign.core.keystore;
 
+import java.security.PrivateKey;
+
 /**
  * file KeyStore.java
  * author liumapp
@@ -24,5 +26,15 @@ public interface KeyStore {
      */
     public boolean createKeyStoreFile (String fileName, String keystorePassword);
 
+    /**
+     * 从keystore中读取私钥
+     * 证书链可以从私钥中获取
+     * @param keystoreFile
+     * @param keystorePassword
+     * @param certAlias
+     * @param certPassword
+     * @return
+     */
+    public PrivateKey readPrivateKeyFromKeyStore (String keystoreFile, String keystorePassword, String certAlias, String certPassword);
 
 }

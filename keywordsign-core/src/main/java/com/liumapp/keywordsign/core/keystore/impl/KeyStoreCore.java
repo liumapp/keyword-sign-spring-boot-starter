@@ -6,9 +6,13 @@ import com.liumapp.keywordsign.core.config.KeywordSignConfigFactory;
 import com.liumapp.keywordsign.core.exceptions.KeyStoreException;
 import com.liumapp.keywordsign.core.keystore.KeyStore;
 import com.liumapp.qtools.file.basic.FileTool;
+import org.bouncycastle.jce.provider.BouncyCastleProvider;
 
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.security.PrivateKey;
+import java.security.Security;
 import java.time.temporal.ChronoUnit;
 
 /**
@@ -62,6 +66,18 @@ public class KeyStoreCore implements KeyStore {
         return true;
     }
 
-
-
+    @Override
+    public PrivateKey readPrivateKeyFromKeyStore(String keystoreFile, String keystorePassword, String certAlias, String certPassword) {
+        PrivateKey pk = null;
+        try {
+            BouncyCastleProvider provider = new BouncyCastleProvider();
+            Security.addProvider(provider);
+            java.security.KeyStore ks = java.security.KeyStore.getInstance(java.security.KeyStore.getDefaultType());
+            ks.load(new FileInputStream(keystoreFile), keystorePassword.toCharArray());
+            pk = (PrivateKey) ks.getKey(certAlias, certPassword.toCharArray());
+        } catch (Exception e) {
+            throw new KeyStoreException("读取私钥失败", e.getCause());
+        }
+        return pk;
+    }
 }
