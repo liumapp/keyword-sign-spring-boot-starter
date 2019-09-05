@@ -1,6 +1,7 @@
 package com.liumapp.keywordsign.core.keystore;
 
 import java.security.PrivateKey;
+import java.security.cert.Certificate;
 
 /**
  * file KeyStore.java
@@ -36,5 +37,8 @@ public interface KeyStore {
      * @return
      */
     public PrivateKey readPrivateKeyFromKeyStore (String keystoreFile, String keystorePassword, String certAlias, String certPassword);
+
+
+    public Certificate[] readCertificateChainFromKeyStore (String keystoreFile, String keystorePassword, String certAlias, String certPassword);
 
 }

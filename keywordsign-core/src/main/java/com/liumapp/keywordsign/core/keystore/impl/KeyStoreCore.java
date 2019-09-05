@@ -13,6 +13,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.security.PrivateKey;
 import java.security.Security;
+import java.security.cert.Certificate;
 import java.time.temporal.ChronoUnit;
 
 /**
@@ -79,5 +80,20 @@ public class KeyStoreCore implements KeyStore {
             throw new KeyStoreException("读取私钥失败", e.getCause());
         }
         return pk;
+    }
+
+    @Override
+    public Certificate[] readCertificateChainFromKeyStore(String keystoreFile, String keystorePassword, String certAlias, String certPassword) {
+        Certificate[] chain = null;
+        try {
+            BouncyCastleProvider provider = new BouncyCastleProvider();
+            Security.addProvider(provider);
+            java.security.KeyStore ks = java.security.KeyStore.getInstance(java.security.KeyStore.getDefaultType());
+            ks.load(new FileInputStream(keystoreFile), keystorePassword.toCharArray());
+            chain = ks.getCertificateChain(certAlias);
+        } catch (Exception e) {
+            throw new KeyStoreException("读取证书链失败", e.getCause());
+        }
+        return chain;
     }
 }
